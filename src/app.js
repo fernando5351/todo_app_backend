@@ -1,6 +1,7 @@
 const express = require('express');
 const port = process.env.PORT || 3000;
 const setupRoutes =  require('./routes')
+const { boomErrorHandler } = require('../middlewares/errorHandler');
 
 const app = express();
 
@@ -14,5 +15,7 @@ app.get('/', async(req, res)=>{
 });
 
 setupRoutes(app);
+
+app.use(boomErrorHandler)
 
 module.exports = app;
