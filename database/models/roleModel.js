@@ -23,7 +23,10 @@ const roleModel = {
 
 class Role extends Model {
     static associate(models){
-        // associations
+        this.belongsTo(models.User, {
+            as: 'user',
+            foreignKey: 'idRole'
+        })
     }
 
     static config(sequelize){

@@ -61,14 +61,14 @@ const UserModel = {
 
 class User extends Model {
     static associate(models) {
-
+		this.hasOne(models.Role, { as: 'role' });
     }
 
     static config(sequelize){
         return{
             sequelize,
-            tableName: 'User',
-            modelName: USER_TABLE,
+            tableName: USER_TABLE,
+            modelName: 'User',
             timestamps: false
         }
     }
