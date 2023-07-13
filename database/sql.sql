@@ -13,6 +13,9 @@ CREATE TABLE users (
   password VARCHAR(255),
   id_role INT,
   created_at datetime,
+  verification BOOLEAN,
+  verification_code VARCHAR(255),
+  status BOOLEAN,
   FOREIGN KEY (id_role) REFERENCES roles(id)
 );
 
