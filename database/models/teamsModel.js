@@ -1,0 +1,39 @@
+const {Model, DataTypes} = require('sequelize');
+
+const TEAMS_TABLES = 'teams';
+
+const teamsModel = {
+    id: {
+        type:DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement:true,
+        allowNull: false,
+        unique: true
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull:false,
+        unique: true
+    }     
+}
+
+class Teams extends Model {
+    static associate (models){
+        //associations
+    }
+
+    static config(sequelize){
+        return{
+            sequelize,
+            modelName: 'Teams',
+            tableName: TEAMS_TABLES,
+            timestamps: false
+        }
+    }
+}
+
+model.exports = {
+    teamsModel,
+    TEAMS_TABLES,
+    Teams
+}
