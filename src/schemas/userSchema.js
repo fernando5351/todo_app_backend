@@ -22,7 +22,13 @@ const updateUser = Joi.object({
     idRole: idRole
 });
 
+const login = Joi.object({
+    email: email.required(),
+    password: password.required()
+});
+
 module.exports = {
     createUser,
-    updateUser
+    updateUser,
+    login
 };

@@ -16,7 +16,7 @@ CREATE TABLE users (
   verification BOOLEAN,
   verification_code VARCHAR(255),
   status BOOLEAN,
-  FOREIGN KEY (id_role) REFERENCES roles(id)
+  FOREIGN KEY(id_role) REFERENCES roles(id)
 );
 
 -- Creación de la tabla "grupos"
