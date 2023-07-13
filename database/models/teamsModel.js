@@ -32,7 +32,7 @@ class Teams extends Model {
     }
 }
 
-model.exports = {
+module.exports = {
     teamsModel,
     TEAMS_TABLES,
     Teams
