@@ -35,36 +35,39 @@ router.get('/:id',async(req,res,next)=>{
 })
 
 router.post('/',
-async(req,res,next)=>{
-    try {
-        const data = req.body;
-        const teams = await Team.Create(data);
-        res.status(201).json({
-            codeStatus: 201,
-            message: 'Team create',
-            data: teams
-        })
-    } catch (error) {
-        next(error)
+validatorHandler(createTeam,'body'),
+    async(req,res,next)=>{
+        try {
+            const data = req.body;
+            const teams = await Team.Create(data);
+            res.status(201).json({
+                codeStatus: 201,
+                message: 'Team create',
+                data: teams
+            })
+        } catch (error) {
+            next(error)
+        }
     }
-}
 
 );
 
-router.patch('/:id',async(req,res,next)=>{
-    validatorHandler(updateTeam,'body');
-    try {
-        const {id} = req.params        
-        const teams = await Team.update(id, req.body)
-        res.status(202).json({
-            codeStatus: 202,
-            message:'team updated successfully!',
-            data:teams
-        })
-    } catch (error) {
-        next(error)
+router.patch('/:id',
+validatorHandler(updateTeam,'body'),
+    async(req,res,next)=>{
+        try {
+            const {id} = req.params        
+            const teams = await Team.update(id, req.body)
+            res.status(202).json({
+                codeStatus: 202,
+                message:'team updated successfully!',
+                data:teams
+            })
+        } catch (error) {
+            next(error)
+        }
     }
-});
+);
 
 router.delete('/:id',async(req,res,next)=>{
     try {
