@@ -5,7 +5,7 @@ class RoleService {
     async getAll() {
         const roles = await models.Role.findAll();
         if (!roles || roles.length === 0) {
-            return 'no records found'
+            throw boom.notFound('role not found')
         } else {
             return roles;
         }
