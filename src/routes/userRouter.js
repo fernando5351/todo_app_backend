@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const validatorHandler = require('../../middlewares/validatorHandler');
 const UserService = require('../services/userService');
 const { createUser, updateUser } = require('../schemas/userSchema');
@@ -27,8 +26,8 @@ router.get('/',
     async (req, res, next) => {
         try {
             const users = await service.getAll();
-            res.status(200).json({
-                codeStatus: 200,
+            res.status(302).json({
+                codeStatus: 302,
                 message:'success get all users',
                 data: users
             })

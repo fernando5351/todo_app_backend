@@ -8,8 +8,8 @@ router.get('/',
     async(req, res, next)=> {
         try {
             const role = await roles.getAll();
-            return res.status(200).json({
-                codeStatus: 200,
+            return res.status(302).json({
+                codeStatus: 302,
                 message:  'all roles fetched',
                 data: role
             })
@@ -24,8 +24,8 @@ router.get('/:id',async(req,res,next)=>{
     try {
         const {id} = req.params;
         const role = await roles.getOne(id);
-        res.status(200).json({
-            status: 200,
+        res.status(302).json({
+            status: 302,
             message:"successfully get one role",
             data : role
         })
@@ -41,8 +41,8 @@ router.post('/',
         try {
             const data = req.body;
             const role = await roles.Create(data)
-            res.status(200).json({
-                status: 200,
+            res.status(201).json({
+                status: 201,
                 message:'success create a user!',
                 data:role
             })
@@ -55,6 +55,7 @@ router.post('/',
 router.patch('/:id', 
     validatorHandler(updateRole,'body'),
     async(req,res,next)=>{
+       try {
         const {id} = req.params;
         const role = await roles.Update(id, req.body)
         res.status(200).json({
@@ -62,6 +63,9 @@ router.patch('/:id',
             message: 'role updated',
             data: role
         })
+       } catch (error) {
+            next(error)
+       }
     }
 )
 
@@ -69,8 +73,8 @@ router.delete('/:id',async(req,res,next)=>{
     try {
         const {id} = req.params;
         const role = await roles.delete(id);
-        res.status(200).json({
-            status: 200,
+        res.status(202).json({
+            status: 202,
             message: 'has been deleted',
             data: role
         })

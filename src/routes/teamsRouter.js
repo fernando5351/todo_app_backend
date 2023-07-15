@@ -9,8 +9,8 @@ router.get('/',
     async (req,res,next)=>{
         try {
             const teams = await Team.getAll();
-            res.status(200).json({
-                codeStatus: 200,
+            res.status(302).json({
+                codeStatus: 302,
                 message: 'success get all teams',
                 data: teams
             })
