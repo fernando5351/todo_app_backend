@@ -61,7 +61,7 @@ const UserModel = {
 
 class User extends Model {
     static associate(models) {
-		this.hasOne(models.Role, { as: 'role' });
+		this.belongsTo(models.Role, { as: 'role' });
     }
 
     static config(sequelize){

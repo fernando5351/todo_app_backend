@@ -5,7 +5,7 @@ const { Teams,teamsModel} = require('./teamsModel')
 function modelsSetup(sequelize){
     Role.init(roleModel, Role.config(sequelize));
     User.init(UserModel, User.config(sequelize));
-    User.init(teamsModel,Teams.config(sequelize));
+    Teams.init(teamsModel,Teams.config(sequelize));
     
     // associations
     Role.associate(sequelize.models);
