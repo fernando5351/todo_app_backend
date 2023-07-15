@@ -17,6 +17,7 @@ class UserService {
         }
         const user = await models.User.create(values);
         await service.sendMail(user.dataValues.email, 'Codigo de verificacion', `tu codigo es: ${code}`);
+        delete user.dataValues.password;
         return user;
     }
 
@@ -25,25 +26,42 @@ class UserService {
         if (!users || users.length === 0) {
             throw boom.notFound('no records found');
         }
+        delete users.dataValues.password;
         return users;
     }
 
     async getOne(id) {
-        const user = await models.User.findByPk(id);
+        const user = await models.User.findByPk(id, {
+            include: ['role']
+        });
         if(!user) {
             throw boom.notFound('no record found');
         }
+        delete user.dataValues.password;
         return user;
     }
 
+    async getEmail() {
+        const email = await models.User.findAll({
+            attributes: ['email'],
+        })
+        return email;
+    }
+
     async findByEmail(email) {
-        const user = await models.User.findOne({ where :{ email }}) ;
+        const user = await models.User.findOne({
+            include: ['role'],
+            where :{ email }
+        }) ;
+        delete user.dataValues.password;
         return user;
     }
 
     async update(id, data) {
         const user = await this.getOne(id);
-        const userUpdated = await user.update(data);
+        await user.update(data);
+        const userUpdated = await this.getOne(id);
+        delete userUpdated.dataValues.password;
         return userUpdated;
     }
 

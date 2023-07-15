@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 const validatorHandler =  require('../../middlewares/validatorHandler');
-const { login } = require('../schemas/userSchema');
+const { login, recovery } = require('../schemas/userSchema');
 const AuthService = require('../services/authService');
 
 const service = new AuthService();
@@ -23,5 +23,12 @@ router.post('/login',
         }
     }
 )
+
+router.get('/recovery',
+    validatorHandler(recovery, 'body'),
+    async (req, res, next) => {
+        res.status(200).json();
+    }
+);
 
 module.exports = router;

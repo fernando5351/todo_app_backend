@@ -5,7 +5,8 @@ services:
     image: mysql:5
     environment:
       - MYSQL_DATABASE=todoApp
-      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=kira002
       - MYSQL_PORT=3306
     ports:
       - 3306:3306

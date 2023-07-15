@@ -27,8 +27,13 @@ const login = Joi.object({
     password: password.required()
 });
 
+const recovery = Joi.object({
+    email: email.required()
+});
+
 module.exports = {
     createUser,
     updateUser,
-    login
+    login,
+    recovery
 };

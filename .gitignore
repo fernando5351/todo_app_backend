@@ -179,6 +179,10 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# docker
+docker-compose.yml
+docker-compose
+
 # Windows shortcuts
 *.lnk
 

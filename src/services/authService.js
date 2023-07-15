@@ -15,6 +15,8 @@ class Auth {
             token
         }
     }
+
+    
 }
 
 module.exports = Auth;

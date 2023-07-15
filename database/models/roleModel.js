@@ -23,7 +23,7 @@ const roleModel = {
 
 class Role extends Model {
     static associate(models){
-        this.belongsTo(models.User, {
+        this.hasOne(models.User, {
             as: 'user',
             foreignKey: 'idRole'
         })
