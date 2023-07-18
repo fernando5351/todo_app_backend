@@ -36,7 +36,7 @@ class RoleService {
     async delete(id){
         const roles = await this.getOne(id)
         await roles.destroy()
-        return roles
+        return `Role eliminado ${id}`
     }
 }
 
