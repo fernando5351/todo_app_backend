@@ -17,7 +17,7 @@ class BoardService {
         return boards;
     }
 
-    async getABoard(id){
+    async getOneABoard(id){
         const board = await models.Board.findByPk(id);
         if (!board ) {
             throw boom.notFound(`Board with id ${id} not found`);

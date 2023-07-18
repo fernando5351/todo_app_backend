@@ -19,7 +19,10 @@ const teamsModel = {
 
 class Teams extends Model {
     static associate (models){
-        //associations
+        this.hasMany(models.Board, {
+            as: 'Boards',
+            foreignKey: 'idTeam'
+        });
     }
 
     static config(sequelize){

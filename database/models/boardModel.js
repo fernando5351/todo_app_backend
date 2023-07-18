@@ -1,4 +1,4 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+    const { Sequelize, Model, DataTypes } = require('sequelize');
 
 const { TEAMS_TABLES } = require('./teamsModel');
 const { USER_TABLE } = require('./userModel');
@@ -50,7 +50,7 @@ const boardModel = {
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW,
+        defaultValue: Sequelize.NOW
     },
     expiresIn: {
         type: DataTypes.DATE,
@@ -60,7 +60,15 @@ const boardModel = {
 
 class Board extends Model {
     static associate(models) {
-
+        console.log(models);
+        this.belongsTo(models.Teams, {
+            as: 'Team',
+            foreignKey: 'idTeam'
+        });
+        this.belongsTo(models.User, {
+            as: 'User',
+            foreignKey: 'idUser'
+        });
     }
 
     static config(sequelize) {

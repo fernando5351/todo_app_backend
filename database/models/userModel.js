@@ -65,6 +65,10 @@ class User extends Model {
 			as: 'Role',
 			foreignKey: 'idRole'
 		});
+		this.hasMany(models.Board, { 
+			as: 'Boards',
+			foreignKey:'idUser'
+		});
     };
 
     static config(sequelize){

@@ -12,6 +12,7 @@ function modelsSetup(sequelize){
     // associations
     Role.associate(sequelize.models);
     User.associate(sequelize.models);
+    Teams.associate(sequelize.models);
     Board.associate(sequelize.models);
 }
 
