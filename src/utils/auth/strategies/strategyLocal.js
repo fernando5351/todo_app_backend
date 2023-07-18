@@ -17,6 +17,7 @@ const localStrategy = new Strategy({
     if(!pass){
         return done(boom.unauthorized('user not alowed'))
     }
+    delete user.dataValues.password;
     return done(null, user);
 });
 

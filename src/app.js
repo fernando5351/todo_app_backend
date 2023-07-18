@@ -9,6 +9,7 @@ app.set('port', port);
 app.use(express.json());
 
 require('./utils/auth');
+
 app.get('/', async(req, res)=>{
     res.json({
         saludo: "hola como estas"

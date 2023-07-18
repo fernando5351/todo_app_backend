@@ -17,24 +17,25 @@ const roleModel = {
     },
     status: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'true',
     }
 }
 
 class Role extends Model {
     static associate(models){
-        this.hasOne(models.User, {
-            as: 'user',
+        this.hasMany(models.User, {
+            as: 'Users',
             foreignKey: 'idRole'
-        })
+        });
     }
 
     static config(sequelize){
         return{
             sequelize,
-            modelName: 'Role',
             tableName: ROLE_TABLE,
-            timestamps :false
+            modelName: 'Role',
+            timestamps: false
         }
     }
 }

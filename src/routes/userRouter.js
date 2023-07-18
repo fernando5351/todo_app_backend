@@ -26,8 +26,8 @@ router.get('/',
     async (req, res, next) => {
         try {
             const users = await service.getAll();
-            res.status(302).json({
-                codeStatus: 302,
+            res.status(200).json({
+                codeStatus: 200,
                 message:'success get all users',
                 data: users
             })

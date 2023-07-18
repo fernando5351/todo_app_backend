@@ -15,9 +15,9 @@ class UserService {
             password: hash,
             verificationCode: code
         }
+        console.log(values);
         const user = await models.User.create(values);
         await service.sendMail(user.dataValues.email, 'Codigo de verificacion', `tu codigo es: ${code}`);
-        delete user.dataValues.password;
         return user;
     }
 
@@ -26,18 +26,16 @@ class UserService {
         if (!users || users.length === 0) {
             throw boom.notFound('no records found');
         }
-        delete users.dataValues.password;
         return users;
     }
 
     async getOne(id) {
         const user = await models.User.findByPk(id, {
-            include: ['role']
+            include: ['Role']
         });
         if(!user) {
             throw boom.notFound('no record found');
         }
-        delete user.dataValues.password;
         return user;
     }
 
@@ -50,10 +48,9 @@ class UserService {
 
     async findByEmail(email) {
         const user = await models.User.findOne({
-            include: ['role'],
+            include: ['Role'],
             where :{ email }
-        }) ;
-        delete user.dataValues.password;
+        });
         return user;
     }
 

@@ -61,8 +61,11 @@ const UserModel = {
 
 class User extends Model {
     static associate(models) {
-		this.belongsTo(models.Role, { as: 'role' });
-    }
+		this.belongsTo(models.Role, { 
+			as: 'Role',
+			foreignKey: 'idRole'
+		});
+    };
 
     static config(sequelize){
         return{
@@ -71,7 +74,7 @@ class User extends Model {
             modelName: 'User',
             timestamps: false
         }
-    }
+    };
 }
 
 module.exports = {
