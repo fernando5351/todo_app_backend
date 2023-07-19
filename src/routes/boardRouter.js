@@ -5,7 +5,7 @@ const { BoardService} = require('../services/boardService');
 
 const services = new BoardService;
 
-router.get('/', validatorHandler(getBoard,'body'),
+router.get('/',
     async (req, res, next) => {
         try {
             const boards = await services.getBoard();

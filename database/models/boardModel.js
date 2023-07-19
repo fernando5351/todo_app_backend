@@ -53,6 +53,7 @@ const boardModel = {
         defaultValue: Sequelize.NOW
     },
     expiresIn: {
+        field: 'expires_in',
         type: DataTypes.DATE,
         allowNull: true
     }
@@ -60,7 +61,6 @@ const boardModel = {
 
 class Board extends Model {
     static associate(models) {
-        console.log(models);
         this.belongsTo(models.Teams, {
             as: 'Team',
             foreignKey: 'idTeam'

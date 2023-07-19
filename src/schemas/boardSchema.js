@@ -6,7 +6,7 @@ const description = Joi.string();
 const status = Joi.boolean();
 const idTeam = Joi.number().integer();
 const idUser =Joi.number().integer();
-const expiresIn = Joi.number().integer();
+const expiresIn = Joi.date();
 
 const createBoard = Joi.object({
     title: title.required(),
