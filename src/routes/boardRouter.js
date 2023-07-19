@@ -37,7 +37,7 @@ validatorHandler(createBoard, 'body'),
     }
 )
 
-router.get('/:id', validatorHandler(getBoard, 'body'),
+router.get('/:id', validatorHandler(getBoard, 'params'),
  async(req,res,next)=>{
     try {
         const {id} = req.params;
