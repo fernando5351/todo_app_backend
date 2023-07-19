@@ -186,4 +186,8 @@ docker-compose
 # Windows shortcuts
 *.lnk
 
+firebase.json
+firebase
+.firebase.json
+./firebase.json
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,linux
