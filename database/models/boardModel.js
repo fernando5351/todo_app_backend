@@ -48,14 +48,14 @@ const boardModel = {
         onUpdate:'CASCADE'
     },
     createdAt: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
         defaultValue: Sequelize.NOW
     },
     // agregando el field
     expiresIn: {
         field: 'expires_in',
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: true
     }
 }
