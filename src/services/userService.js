@@ -65,7 +65,7 @@ class UserService {
     async delete(id) {
         const user = await this.getOne(id);
         await user.destroy();
-        return id;
+        return `Usuario con id: ${id} eliminado`;
     }
 }
 

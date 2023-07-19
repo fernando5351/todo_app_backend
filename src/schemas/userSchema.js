@@ -31,9 +31,14 @@ const recovery = Joi.object({
     email: email.required()
 });
 
+const getUser = Joi.object({
+    id: id.required()
+});
+
 module.exports = {
     createUser,
     updateUser,
     login,
-    recovery
+    recovery,
+    getUser
 };
