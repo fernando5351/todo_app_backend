@@ -26,17 +26,19 @@ class BoardService {
     }
 
     async updateBoard(id, data){
-        const board = await this.getABoard(id);
+        const board = await this.getOneABoard(id);
         const boardUpdated = await board.update(data);
         return boardUpdated;
     }
 
     async deleteBoard(id) {
-        const board = await this.getABoard(id);
+        const board = await this.getOneABoard(id);
         await board.destroy();
         return id;
     }
 };
+
+
 
 module.exports = {
     BoardService
