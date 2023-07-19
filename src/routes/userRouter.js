@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const validatorHandler = require('../../middlewares/validatorHandler');
 const UserService = require('../services/userService');
-const { createUser, updateUser } = require('../schemas/userSchema');
+const { createUser, updateUser, getUser } = require('../schemas/userSchema');
 
 const service = new UserService();
 
@@ -38,6 +38,7 @@ router.get('/',
 );
 
 router.get('/:id',
+    validatorHandler(getUser, 'params'),
     async (req, res, next) => {
         try {
             const { id } = req.params;
@@ -71,6 +72,7 @@ router.patch('/:id',
 );
 
 router.delete('/:id',
+    validatorHandler(getUser, 'params'),
     async (req, res, next) => {
         try {
             const { id } = req.params;
