@@ -52,6 +52,7 @@ const boardModel = {
         allowNull: false,
         defaultValue: Sequelize.NOW
     },
+    // agregando el field
     expiresIn: {
         field: 'expires_in',
         type: DataTypes.DATE,
