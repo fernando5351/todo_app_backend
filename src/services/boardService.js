@@ -12,7 +12,7 @@ class BoardService {
     async getBoard(){
         const boards = await models.Board.findAll();
         if(!boards || boards.length <= 0) {
-            throw new Error('No Boards Found!');
+            throw boom.notFound('No Boards Found!');
         }
         return boards;
     }
