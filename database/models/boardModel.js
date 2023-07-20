@@ -48,7 +48,7 @@ const boardModel = {
         onUpdate:'CASCADE'
     },
     createdAt: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
     },

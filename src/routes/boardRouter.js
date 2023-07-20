@@ -70,7 +70,7 @@ router.delete('/:id',async(req,res,next)=>{
         const {id} = req.params;
         const board = await services.deleteBoard(id)
         res.status(202).json({
-            statusCode: 200,
+            statusCode: 202,
             message:'board deletes',
             data: board
         })
