@@ -27,6 +27,7 @@ class BoardService {
 
     async updateBoard(id, data){
         const board = await this.getOneABoard(id);
+        console.log(board);
         const boardUpdated = await board.update(data);
         return boardUpdated;
     }
